@@ -2,9 +2,6 @@ require 'sinatra'
 require 'shotgun'
 require 'sinatra/base'
 
-
-set    :session_secret, "here be dragons"
-
 $STARTHP = 100
 
 class Battle_app < Sinatra::Base
@@ -27,6 +24,12 @@ class Battle_app < Sinatra::Base
     @Player1_HP = $STARTHP
     @Player2_HP = $STARTHP
     erb :play
+  end
+
+  get '/attack' do
+    @player1_Name =  session[:player1_Name]
+    @Player2_Name = session[:Player2_Name]
+    erb :attack
   end
 
 
