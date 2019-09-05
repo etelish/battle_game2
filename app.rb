@@ -1,9 +1,9 @@
 require 'sinatra'
 require 'shotgun'
 require 'sinatra/base'
-require 'player'
+require './lib/player'
 
-$STARTHP = 100
+$DEFAULT_HP = 100
 
 class Battle_app < Sinatra::Base
 
@@ -22,14 +22,15 @@ class Battle_app < Sinatra::Base
   get '/play' do
     @Player1_Name = $player_1.name
     @Player2_Name = $player_2.name
-    @Player1_HP = $STARTHP
-    @Player2_HP = $STARTHP
+    @Player1_HP = $DEFAULT_HP
+    @Player2_HP = $DEFAULT_HP
     erb :play
   end
 
   get '/attack' do
-    @player1_Name =  $player_1.name
-    @Player2_Name = $player_2.name
+    @player1_name =  $player_1.name
+    @player2_name = $player_2.name
+    $player_1.attack($player_2)
     erb :attack
   end
 

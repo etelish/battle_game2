@@ -17,7 +17,7 @@ end
 describe 'player hitpoints', type: :feature do
   scenario 'display player 2 hitpoints' do
       sign_in_and_play
-      expect(page).to have_content 'Rafaela 100 HP'
+      expect(page).to have_content 'Volker: 100 HP'
   end
 end
 
@@ -26,5 +26,13 @@ describe 'attacking player', type: :feature do
     sign_in_and_play
     click_button 'Attack'
     expect(page).to have_content 'attacked'
+  end
+end
+
+describe 'HP state', type: :feature do
+  scenario 'HP reduces after attack' do
+    sign_in_and_play
+    click_button 'Attack'
+    expect(page).to have_content 'lose 10 points'
   end
 end
