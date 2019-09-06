@@ -3,8 +3,6 @@ require 'shotgun'
 require 'sinatra/base'
 require './lib/player'
 
-$DEFAULT_HP = 100
-
 class Battle_app < Sinatra::Base
 
   enable :sessions
@@ -22,8 +20,8 @@ class Battle_app < Sinatra::Base
   get '/play' do
     @Player1_Name = $player_1.name
     @Player2_Name = $player_2.name
-    @Player1_HP = $DEFAULT_HP
-    @Player2_HP = $DEFAULT_HP
+    @Player1_HP = $player_1.hit_points
+    @Player2_HP = $player_2.hit_points
     erb :play
   end
 

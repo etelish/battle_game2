@@ -33,6 +33,6 @@ describe 'HP state', type: :feature do
   scenario 'HP reduces after attack' do
     sign_in_and_play
     click_button 'Attack'
-    expect(page).to have_content 'lose 10 points'
+    expect(page).to have_content 'Volker: 90 HP'
   end
 end
